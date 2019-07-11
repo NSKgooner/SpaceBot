@@ -1,2 +1,0 @@
-token = "3bd41e7ab3e38d16aae161436c2da731e6f2fd6499185b40a1d52f670e07fe77572ffea3c0361b4c37520"
-confirmation_token = "polaroid"
