@@ -1,17 +1,13 @@
 import vkapi
-from predictor import Predictor
 
-
-def get_answer(body):
-    predictor = Predictor()
-    message = predictor.chainer()
-    if message:
-        return '*текст про космос*'
+def get_answer(body, predictor, generator):
+    message = predictor.chainer([body])
+    if message[0] == 1:
+        return generator.make_chain()
     else:
         return 'Х*ли пришел???'
 
-
-def create_answer(data, token):
-    user_id = data['user_id']
-    message = get_answer(data['body'].lower())
-    vkapi.send_message(user_id, token, message)
+def create_answer(data, token, predictor, generator):
+   user_id = data['user_id']
+   message = get_answer(data['body'].lower(), predictor, generator)
+   vkapi.send_message(user_id, token, message)
